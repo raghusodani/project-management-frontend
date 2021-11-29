@@ -12,7 +12,7 @@ import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
-import { getToken } from '../services/LocalStorageService/LocalStorageService'
+import { getToken,getRole } from '../services/LocalStorageService/LocalStorageService'
 import { IconButton } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit'
 
@@ -123,7 +123,7 @@ export default function Grades() {
                     </TableCell>
                     <TableCell align="center" component="th" scope="row">
                       {grade[id]}
-                      <EditGrade setGrade={setGrade} />
+                      {getRole()==="1" && <EditGrade setGrade={setGrade} />}
                     </TableCell>
                   </TableRow>
                 ))}

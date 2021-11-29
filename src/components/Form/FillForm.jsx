@@ -3,7 +3,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useParams } from 'react-router-dom'
-import { getToken } from '../../services/LocalStorageService/LocalStorageService'
+import { getToken,getRole } from '../../services/LocalStorageService/LocalStorageService'
 import { fillFormSchema } from '../../services/ValidationSchemas/ValidationSchema'
 import MultiValField from './MultiValField'
 import { useHistory } from 'react-router'
@@ -66,7 +66,8 @@ function FillForm() {
       )
       .then((res) => {
         console.log('api response 🚀', res)
-        history.push('/dashboard')
+        const url = '/' + getRole() + '/dashboard'
+        history.push(url);
       })
       .catch((error) => {
         console.error(error.response)
